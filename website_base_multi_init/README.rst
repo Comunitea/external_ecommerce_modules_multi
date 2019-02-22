@@ -1,5 +1,5 @@
-MultiWebsite Base Module Anzamar
-================================
+MultiWebsite Base Module
+========================
 
 BackEnd customization for All Websites
 --------------------------------------

@@ -2,30 +2,29 @@
 <odoo>
         <data noupdate="1">
 
-            <!--Create Company Grupo-->
-            <record id="group_company" model="res.company">
-                <field name="name">Grupo 2</field>
-                <field name="currency_id" ref="base.EUR"/>
-            </record>
+            <!--Create Company Group-->
+            <!--<record id="group_company" model="res.company">-->
+                <!--<field name="name">Grupo 2</field>-->
+                <!--<field name="currency_id" ref="base.EUR"/>-->
+            <!--</record>-->
 
-            <!--Create Company Anzamar-->
-            <!--No es necesario crearla ya que referencia como: ref="base.main_company"-->
-            <!--Pero si le añadimos datos fijos-->
+            !--Update Company Base for first company-->
             <record id="base.main_company" model="res.company">
-                <field name="logo" type="base64" file="website_base_multi_anz/static/img/anzamar_logo.jpeg"/>
-                <field name="email">info@anzamar.com</field>
-                <field name="phone">952 23 90 00</field>
+                <field name="logo" type="base64" file="website_base_multi_init/static/img/company_logo.png"/>
+                <field name="email">info@domain.com</field>
+                <field name="phone">982 20 20 20</field>
             </record>
 
 
-            <!--Create Company Bemar-->
-            <record id="bemar_company" model="res.company">
-                <field name="name">Bemar Sport S.L. 2</field>
+            <!--Create Second Company-->
+            <record id="second_company" model="res.company">
+                <field name="name">My Company 2</field>
                 <field name="currency_id" ref="base.EUR"/>
-                <field name="parent_id" ref="group_company"/>
-                <field name="logo" type="base64" file="website_base_multi_anz/static/img/bemar_logo.png"/>
-                <field name="email">info@bemar.com</field>
-                <field name="phone">952 23 90 00</field>
+                <!--Only if Group Company Exist-->
+                <!--<field name="parent_id" ref="group_company"/>-->
+                <field name="logo" type="base64" file="website_base_multi_init/static/img/company_logo.png"/>
+                <field name="email">info@domain.com</field>
+                <field name="phone">982 20 20 20</field>
             </record>
 
         </data>

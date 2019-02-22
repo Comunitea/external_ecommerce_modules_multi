@@ -26,7 +26,7 @@
 ##############################################################################
 
 {
-    'name': 'MultiWebsite Base Module Anzamar',
+    'name': 'MultiWebsite Base Module',
     'version': '1.0',
     'summary': 'BackEnd customization for all companies and their websites.',
     'description': '',
@@ -61,6 +61,6 @@
     ],
     'qweb': [
     ],
-    'installable': True,
+    'installable': False,
     'application': False,
 }
