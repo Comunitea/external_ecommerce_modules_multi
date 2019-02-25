@@ -1,11 +1,11 @@
 Theme Multi Base Init
 =====================
 
-Provides Base FrontEnd customization for Any Website.
---------------------------------------------
+Provides a theme for Website.
+-----------------------------
 
 Module Base to int and create a theme for any Website. Not installable.
----------------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
 This is a theme module that contains styles and layout elements for front-end part.
 

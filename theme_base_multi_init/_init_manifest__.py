@@ -26,10 +26,10 @@
 ##############################################################################
 
 {
-    'name': 'Multi Base Theme',
+    'name': 'Theme MultiWebsite Base Init',
     'version': '1.0',
-    'summary': 'Theme Multi Base Init',
-    'description': 'Module Base to int and create a theme for any Website. Not installable.',
+    'summary': 'Module Base to int and create a theme for any Website. Not installable.',
+    'description': '',
     'category': 'Theme/Ecommerce',
     'author': 'Comunitea',
     'website': 'http://www.comunitea.com',
