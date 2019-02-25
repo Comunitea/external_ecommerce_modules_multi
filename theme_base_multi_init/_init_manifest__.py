@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 #
-# © 2018 Comunitea
-# Pavel Smirnov <pavel@comunitea.com>
-# Rubén Seijas <ruben@comunitea.com>
-# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
-#
 ##############################################################################
 #
-#    Copyright (C) {year} {company} All Rights Reserved
-#    ${developer} <{mail}>$
+#    License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
+#    © 2019 Comunitea - Ruben Seijas <ruben@comunitea.com>
+#    © 2019 Comunitea - Pavel Smirnov <pavel@comunitea.com>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -51,6 +47,7 @@
         'templates/footer.xml',
         'templates/breadcrumbs_bar.xml',
         'templates/pages.xml',
+        'templates/page_home.xml',
         'templates/page_normal.xml',
         'templates/page_newsletter.xml',
         'templates/page_with_sections.xml',
