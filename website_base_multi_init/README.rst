@@ -1,8 +1,11 @@
 MultiWebsite Base Module
 ========================
 
-BackEnd customization for All Websites
---------------------------------------
+Provides BackEnd customization for all companies and their websites.
+--------------------------------------------------------------------
+
+Module Base to int and create a common base configuration for all companies and their websites. Not installable.
+----------------------------------------------------------------------------------------------------------------
 
 This module contains all common base configuration for all companies and their websites, including their Themes.
 
