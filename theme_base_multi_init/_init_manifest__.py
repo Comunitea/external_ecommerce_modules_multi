@@ -26,7 +26,7 @@
     'version': '1.0',
     'summary': 'Module Base to int and create a theme for any Website. Not installable.',
     'description': '',
-    'category': 'Theme/Ecommerce',
+    'category': 'Theme',
     'author': 'Comunitea',
     'website': 'http://www.comunitea.com',
     'license': 'AGPL-3',
