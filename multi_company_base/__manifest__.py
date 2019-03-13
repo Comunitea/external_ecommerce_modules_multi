@@ -41,6 +41,7 @@
     'depends': [
         'ecommerce_base',
         'web_website',
+        'ir_rule_website',
         'website_multi_company',
         'website_multi_company_crm',
         'website_multi_company_sale',
