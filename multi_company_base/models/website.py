@@ -36,7 +36,6 @@ class Website(models.Model):
         This is necessary for how know to refer to inherit templates and avoid update problems
         who activate auto generated views and hide customatedes inherit templates.
         """
-        super(Website, self)._multi_theme_activate()
         main_assets_frontend = (
             self.env.ref("web.assets_frontend") |
             self.env.ref("website.assets_frontend"))
@@ -53,7 +52,7 @@ class Website(models.Model):
                 )
                 if not default_theme:
                     _logger.info(
-                        "Deleting multi website theme views for %s: %s",
+                        "MULTI_COMPANY_BASE: Deleting multi website theme views for %s: %s",
                         website.display_name,
                         website.multi_theme_view_ids,
                     )
@@ -131,7 +130,7 @@ class Website(models.Model):
                 view._replace_parent(view.inherit_id.origin_view_id)
             views_to_remove.unlink()
             _logger.info(
-                "Updated multi website theme views for %s: %s",
+                "MULTI_COMPANY_BASE: Updated multi website theme views for %s: %s",
                 website.display_name,
                 website.multi_theme_view_ids,
             )
