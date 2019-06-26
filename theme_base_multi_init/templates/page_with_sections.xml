@@ -13,21 +13,21 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <img class="img-responsive" src="/theme_bas/static/img/theme_name/first_slide.svg" alt="First slide"/>
+                            <img class="img-responsive" src="/theme_name/static/img/theme_name/first_slide.svg" alt="First slide"/>
                             <div class="carousel-caption">
                                 <h1>Título 1</h1>
                                 <h3>Subtitulo 1</h3>
                             </div>
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="/theme_bas/static/img/theme_name/second_slide.svg" alt="Second slide"/>
+                            <img class="img-responsive" src="/theme_name/static/img/theme_name/second_slide.svg" alt="Second slide"/>
                             <div class="carousel-caption">
                                 <h1>Título 2</h1>
                                 <h3>Subtitulo 2</h3>
                             </div>
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="/theme_bas/static/img/theme_name/third_slide.svg" alt="Third slide"/>
+                            <img class="img-responsive" src="/theme_name/static/img/theme_name/third_slide.svg" alt="Third slide"/>
                             <div class="carousel-caption">
                                 <h1>Título 3</h1>
                                 <h3>Subtitulo 3</h3>

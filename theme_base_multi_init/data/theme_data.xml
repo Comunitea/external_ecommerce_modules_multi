@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <data noupdate="1">
+    <!-- Record that lets website admin to choose this theme -->
+    <record model="website.theme" id="theme_name_multi">
+        <field name="name">Multi Website Theme</field>
+        <field name="dependency_ids" eval="[(4, ref('website_multi_theme.theme_default'))]"/>
+    </record>
 
-        <record model="website.theme" id="theme_basst_website_multi">
-            <field name="name">Multiwebsite First Website Theme</field>
-            <field name="converted_theme_addon">theme_basst_website</field>
-        </record>
+    <!-- List provided assets  -->
+    <record model="website.theme.asset" id="theme_name_multi_asset">
+        <field name="name">theme_name.theme_name_website_assets_frontend</field>
+        <field name="theme_id" ref="theme_name.theme_name_multi"/>
+    </record>
 
-    </data>
+    <!-- Themes should always call this method after adding their stuff,
+         to make users get immediate availability, insead of having to reload themes. -->
+    <function model="website.theme"
+              name="_convert_assets"
+              eval="([ref('theme_name.theme_name_multi')])"/>
+
+    <!-- This method prepare assets and applies Point theme for Point website -->
+    <!-- Hook to reload theme on website_multi_theme module updates -->
+    <function model="website"
+              name="multi_theme_reload"
+              eval="([ref('website_base_multi_name.website_name_website')])"
+    />
 
 </odoo>

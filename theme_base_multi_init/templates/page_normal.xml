@@ -13,22 +13,22 @@
                     <div class="item active">
                         <img class="img-responsive" src="/theme_bas/static/img/umbro/umbro_carousel_1.jpg" alt="First slide"/>
                         <div class="carousel-caption">
-                            <h1>Team Wear</h1>
-                            <h3>Pensado especialmente para equipos</h3>
+                            <h1>Título 1</h1>
+                                <h3>Subtitulo 1</h3>
                         </div>
                     </div>
                     <div class="item">
                         <img class="img-responsive" src="/theme_bas/static/img/umbro/umbro_carousel_2.jpg" alt="Second slide"/>
                         <div class="carousel-caption">
-                            <h1>Zapatillas</h1>
-                            <h3>Adaptadas a todas las necesidades</h3>
+                            <h1>Título 2</h1>
+                                <h3>Subtitulo 2</h3>
                         </div>
                     </div>
                     <div class="item">
                         <img class="img-responsive" src="/theme_bas/static/img/umbro/umbro_carousel_3.jpg" alt="Third slide"/>
                         <div class="carousel-caption">
-                            <h1>Testil</h1>
-                            <h3>Nuevas lineas pensadas para tí</h3>
+                            <h1>Título 3</h1>
+                                <h3>Subtitulo 3</h3>
                         </div>
                     </div>
                 </div>
@@ -44,35 +44,19 @@
             </div>
             <div class="row mt32 mb32">
                 <div class="col-md-12">
-                    <h1>Umbro</h1>
-                    <h2>Especialistas en tí</h2>
+                    <h1>H1 1</h1>
+                    <h2>H2 1</h2>
+                    <p>Parrafo 1</p>
                 </div>
                 <div class="col-md-6">
-                    <h3>¿Quienes somos?</h3>
-                    <p>Nuestros 90 años de historia son una fuente de inspiración constante, pero la meta siempre es el futuro.
-                        En 2017, Umbro ha creado las equipaciones de algunos de los mejores equipos de fútbol del mundo,
-                        una estupenda colección de botas profesionales, material deportivo de vanguardia y elegante ropa de calle inspirada en la grandeza de este deporte.</p>
-                    <p>Viste con orgullo, juega con pasión</p>
-                    <p>Allá donde aparezca el mítico doble diamante <strong><em>zapatillas o botas, camisetas o equipaciones</em></strong>,
-                        siempre será garantía de calidad y autenticidad.
-                        Todos y cada uno de los artículos que lucen el logo de Umbro han sido diseñados por personas que conocen y aman el deporte.</p>
-                    <p>El visionario Harold Humphreys quería darle un toque de estilo sartorial a la ropa deportiva para cubrir con estilo las necesidades prácticas del atleta contemporáneo.
-                        Desde las botas Speciali <strong><em>la revolución ligera que continúa siendo una pieza clave en los vestuarios de todo el mundo</em></strong>,
-                        del terreno de juego a la pista de entrenamiento, Umbro permanece fiel a ese ideal. </p>
-                    <p>Los partidos más memorables tienen una cosa en común:
-                        <a href="https://umbro.es/" target="_blank" alt="Enlace www.umbro.es" title="Pagina web de Umbro" rel="nofollow">Umbro</a>.</p>
+                    <h1>H1 2</h1>
+                    <h2>H2 2</h2>
+                    <p>Parrafo 2</p>
                 </div>
                 <div class="col-md-6 text-center">
-                    <p>
-                        <a href="https://umbro.es/" target="_blank" alt="Enlace www.umbro.es" title="Pagina web de Umbro" rel="nofollow">
-                            <img class="img-responsive" src="/theme_bas/static/img/umbro/umbro_logo.jpg" alt="Logo Umbro"/>
-                        </a>
-                    </p>
-                </div>
-                <div class="col-md-12">
-                    <h3>Conócenos</h3>
-                    <p>Puedes visitar la tienda oficial de Umbro en este enlace:
-                        <a href="https://umbro.es/" target="_blank" alt="Enlace www.umbro.es" title="Pagina web de Umbro" rel="nofollow">Umbro</a></p>
+                    <h1>H1 3</h1>
+                    <h2>H2 3</h2>
+                    <p>Parrafo 3</p>
                 </div>
             </div>
         </xpath>
