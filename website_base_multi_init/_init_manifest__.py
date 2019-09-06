@@ -55,6 +55,7 @@
         'data/website_data.xml',
         'views/res_company_views.xml',
         'views/website_views.xml',
+        'templates/head.xml',
     ],
     'images': [
         '/static/description/icon.png',

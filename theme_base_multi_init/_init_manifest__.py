@@ -41,9 +41,11 @@
     'data': [
         'data/theme_data.xml',
         'data/menu_data.xml',
+        'data/legal_data.xml',
         'data/page_data.xml',
         'templates/head.xml',
         'templates/header.xml',
+        'templates/cart.xml',
         'templates/footer.xml',
         'templates/breadcrumbs_bar.xml',
         'templates/pages.xml',
@@ -51,6 +53,7 @@
         'templates/page_normal.xml',
         'templates/page_newsletter.xml',
         'templates/page_with_sections.xml',
+        'templates/product.xml',
     ],
     'images': [
         '/static/description/icon.png',
