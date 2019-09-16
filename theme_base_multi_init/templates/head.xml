@@ -12,9 +12,6 @@
             <link href="/theme_name/static/css/shop.less" rel="stylesheet" type="text/less"/>
             <link href="/theme_name/static/css/media.less" rel="stylesheet" type="text/less"/>
         </xpath>
-        <xpath expr="script[last()]" position="after">
-            <script type="text/javascript" src="/theme_name/static/js/main.js" />
-        </xpath>
     </template>
 
 </odoo>

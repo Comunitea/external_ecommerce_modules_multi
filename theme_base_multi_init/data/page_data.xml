@@ -5,29 +5,29 @@
         <record id="website_legal_page.advise_page" model="website.page">
             <field name="name">Legal Advise</field>
             <field name="website_published">True</field>
-            <field name="website_ids" eval="[(6, 0, [ref('website.default_website')])]"/>
+            <field name="website_ids" eval="[(6, 0, [ref('website_base_multi_init.default_website')])]"/>
             <field name="url">/legal/advice</field>
-            <field name="view_id" ref="website_legal_page.advice"/>
+            <field name="view_id" ref="theme_base_multi_init.THEME_NAME_advise_page_tmp"/>
         </record>
 
         <record id="website_legal_page.privacy_page" model="website.page">
             <field name="name">Privacy Policy</field>
             <field name="website_published">True</field>
-            <field name="website_ids" eval="[(6, 0, [ref('website.default_website')])]"/>
+            <field name="website_ids" eval="[(6, 0, [ref('website_base_multi_init.default_website')])]"/>
             <field name="url">/legal/privacy-policy</field>
-            <field name="view_id" ref="website_legal_page.privacy-policy"/>
+            <field name="view_id" ref="theme_base_multi_init.THEME_NAME_privacy_page_tmp"/>
         </record>
 
         <record id="website_legal_page.terms_page" model="website.page">
             <field name="name">Terms of Use</field>
             <field name="website_published">True</field>
-            <field name="website_ids" eval="[(6, 0, [ref('website.default_website')])]"/>
+            <field name="website_ids" eval="[(6, 0, [ref('website_base_multi_init.default_website')])]"/>
             <field name="url">/legal/terms-of-use</field>
-            <field name="view_id" ref="website_legal_page.terms-of-use"/>
+            <field name="view_id" ref="theme_base_multi_init.THEME_NAME_terms_page_tmp"/>
         </record>
 
         <!-- Contact Us -->
-        <template id="THEME_NAME_contactus_view" name="Contact Us THEME_NAME View" inherit_id="website_multi_theme.auto_view_THEME_NAME_website_crm_contactus_form">
+        <template id="THEME_NAME_contactus_tmp" name="Contact Us THEME_NAME View" inherit_id="website_multi_theme.auto_view_THEME_NAME_website_crm_contactus_form">
             <!-- Google recaptcha and Accept Legal contact form -->
             <xpath expr="//div[hasclass('form-field')][last()]" position="after">
                 <t t-call="website_base_multi_init.THEME_NAME_website_crm_contactus_form_recaptcha_snippet"/>
@@ -39,7 +39,7 @@
             <field name="website_published">False</field>
             <field name="website_ids" eval="[(6, 0, [ref('website.default_website')])]"/>
             <field name="url">/contactus</field>
-            <field name="view_id" ref="theme_base_multi_init.THEME_NAME_contactus_view"/>
+            <field name="view_id" ref="theme_base_multi_init.THEME_NAME_contactus_tmp"/>
         </record>
 
         <!--About Us-->

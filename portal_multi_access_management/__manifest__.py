@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 #
+# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
+#
 ##############################################################################
 #
-#    License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
-#    © 2019 Comunitea - Ruben Seijas <ruben@comunitea.com>
-#    © 2019 Comunitea - Pavel Smirnov <pavel@comunitea.com>
+#    Copyright (C) {year} {company} All Rights Reserved
+#    ${developer} <{mail}>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -22,47 +23,29 @@
 ##############################################################################
 
 {
-    'name': 'Theme MultiWebsite Base Init',
+    'name': 'Portal Multi Access Management',
     'version': '1.0',
-    'summary': 'Module Base to int and create a theme for any Website. Not installable.',
+    'summary': 'Manage allowed websites to portal access and portal wizard invitation',
     'description': '',
-    'category': 'Theme',
+    'category': 'Website',
     'author': 'Comunitea',
     'website': 'http://www.comunitea.com',
     'license': 'AGPL-3',
     'contributors': [
-        'Pavel Smirnov <pavel@comunitea.com>',
         'Rubén Seijas <ruben@comunitea.com>',
     ],
     'depends': [
-        'portal',
-        'website_base_multi_init'
+        'web_website',
+        'ir_config_parameter_multi_company',
     ],
     'data': [
-        'data/theme_data.xml',
-        'data/website_data.xml',
-        'data/legal_data.xml',
-        'data/menu_data.xml',
-        'data/legal_data.xml',
-        'data/page_data.xml',
-        'templates/head.xml',
-        'templates/header.xml',
-        'templates/cart.xml',
-        'templates/footer.xml',
-        'templates/product.xml',
-        'templates/breadcrumbs_bar.xml',
-        'templates/shop.xml',
-        'templates/page_home.xml',
-        'templates/page_normal.xml',
-        'templates/page_newsletter.xml',
-        'templates/page_with_sections.xml',
-        'templates/product.xml',
+        'views/portal_wizard_views.xml',
     ],
     'images': [
         '/static/description/icon.png',
     ],
     'qweb': [
     ],
-    'installable': False,
+    'installable': True,
     'application': False,
 }

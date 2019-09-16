@@ -53,11 +53,15 @@
         'data/website_data.xml',
         'views/res_company_views.xml',
         'views/website_views.xml',
+<<<<<<< HEAD
         'views/product_views.xml',
         'templates/header.xml',
         'templates/account.xml',
         'templates/snippets.xml',
         'templates/breadcrumbs_bar.xml',
+=======
+        'templates/head.xml',
+>>>>>>> 77ff6a51ea2b4f138b6bf2a0a53f145b7216dc6f
     ],
     'images': [
         '/static/description/icon.png',

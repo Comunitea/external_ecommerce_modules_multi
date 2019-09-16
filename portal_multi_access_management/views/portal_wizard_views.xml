@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- wizard action on res.partner -->
+    <act_window id="portal.partner_wizard_action"
+                name="Portal Multi Access Management"
+                src_model="res.partner"
+                res_model="portal.wizard"
+                view_type="form" view_mode="form"
+                key2="client_action_multi" target="new"
+                groups="base.group_partner_manager"/>
+
+    <!-- wizard view -->
+    <record id="portal.wizard_view" model="ir.ui.view">
+        <field name="name">Portal Multi Access Management</field>
+        <field name="model">portal.wizard</field>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="replace">
+                <form string="Portal Multi Access Management">
+                    <separator string="Access rights"/>
+                    <field name="portal_id" widget="selection" readonly="1"/>
+                    <div>
+                        Select which contacts should belong to the portal in the list below.
+                        The email address of each selected contact must be valid and unique.
+                        If necessary, you can fix any contact's email address directly in the list.
+                    </div>
+                    <separator string="Domain"/>
+                    <div class="alert alert-info">
+                        <group>
+                            <field name="portal_access_domain" readonly="1"/>
+                        </group>
+                    </div>
+                    <div class="alert alert-warning">
+                        <p class="text-center"><strong>CAUTION</strong>:</p>
+                        <p>You only can management portal access for your current website domain.</p>
+                        <p>Remember: <strong>NEVER USE ALL WEBSITES</strong>. You have to change it in black task bar by select another one.</p>
+                        <p>If you do not have a website selector in black task bar, please ask for permissions of Multi Websites for Backend to your administrator.</p>
+                        <p>Please, note this selector is available only if you have more than one allowed websites for your user otherwise current website domain will be taken automatically from your user settings.</p>
+                    </div>
+                    <separator string="Users to Granted Access"/>
+                    <field name="user_ids">
+                        <tree string="Contacts" editable="bottom" create="false" delete="false">
+                            <field name="partner_id" force_save="1"/>
+                            <field name="email"/>
+                            <field name="in_portal"/>
+                        </tree>
+                    </field>
+                    <div class="alert alert-warning">
+                        <p class="text-center"><strong>Please, pay attention to portal checkbox.</strong></p>
+                        <p>Remember: You have to check it for users who you want granted access.</p>
+                        <p>If an user have already checked it then means this user has already get granted access for some website but not for a website with this domain, therefore will be sent a new email access for this domain.</p>
+                        <p>Note that you can always check user access in their settings by allowed websites field.</p>
+                    </div>
+                    <separator string="Optional Welcome Message"/>
+                    <field name="welcome_message" placeholder="This text is included in the email sent to new portal users."/>
+                    <footer>
+                        <button string="Apply" name="action_apply" type="object" class="btn-primary disabled if 'NO DOMAIN' in portal_access_domain else ''"/>
+                        <button string="Cancel" class="btn-default" special="cancel" />
+                    </footer>
+                </form>
+            </xpath>
+        </field>
+    </record>
+</odoo>
