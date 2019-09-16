@@ -18,8 +18,9 @@ class Website(models.Model):
     social_linkedin = fields.Char(related=False)
     social_youtube = fields.Char(related=False)
     social_googleplus = fields.Char(related=False)
-    social_instagram = fields.Char(related=False)
-    email = fields.Char(string='Website Email', related=False)
+    social_instagram = fields.Char(related=False, store=True, string='Instagram Account')
+    email = fields.Char(related=False, store=True, string='Website Email')
+    phone = fields.Char(related=False, store=True, string='Website Phone')
 
 
 class ResConfigSettings(models.TransientModel):
@@ -27,6 +28,8 @@ class ResConfigSettings(models.TransientModel):
 
     website_id = fields.Many2one('website', string="website", default=_default_website, required=True)
     social_instagram = fields.Char(string='Website Email', related='website_id.social_instagram')
+    email = fields.Char(related='website_id.email')
+    phone = fields.Char(related='website_id.phone')
 
 
 

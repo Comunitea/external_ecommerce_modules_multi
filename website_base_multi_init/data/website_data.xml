@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-        <data noupdate="0">
+        <data>
 
-            <!--Delete default website-->
-            <delete id="website.default_website" model="website"/>
-
-            <!--Create First Website First Company-->
-            <record id="first_website" model="website">
+            <!--Convert Default Website in THEME_NAME website-->
+            <record id="website.default_website" model="website">
                 <field name="name">First Website</field>
                 <field name="domain">first</field>
                 <field name="company_id" ref="base.main_company"/>
@@ -18,6 +15,9 @@
                 <!--<field name="social_googleplus"></field>-->
                 <!--<field name="social_linkedin"></field>-->
                 <!--<field name="social_instagram"></field>-->
+                <field name="base_url">http://_______domain_________/</field>
+                <field name="email">info@canilike.com</field>
+                <field name="phone">111-222-333</field>
             </record>
 
             <!--Create Second Website Second Company-->

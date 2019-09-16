@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Remove the My Account breadcrumb's bar -->
+    <template id="can_breadcrumbs_account_remove" name="Remove Portal Account BreadCrumbs Canilike Theme Template" inherit_id="portal.portal_layout">
+        <xpath expr="//div[hasclass('o_portal')]" position="attributes">
+            <attribute name="t-if">True == False</attribute>
+        </xpath>
+    </template>
+
+    <!-- Remove the Blog breadcrumb's bar -->
+    <template id="THEME_NAME_breadcrumbs_blog_remove" name="Remove Blog BreadCrumbs" inherit_id="website_blog.blog_breadcrumb">
+        <xpath expr="//div[hasclass('container')]" position="attributes">
+            <attribute name="t-if">True == False</attribute>
+        </xpath>
+    </template>
+
+</odoo>

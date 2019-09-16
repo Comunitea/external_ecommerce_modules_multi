@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-    <data noupdate="1">
+    <data>
 
         <!-- website views -->
         <record id="view_website_form_instagram" model="ir.ui.view">
@@ -11,9 +10,24 @@
             <field name="arch" type="xml">
                 <group name="social_media" position="inside">
                     <field name="social_instagram"/>
+                    <field name="email"/>
+                    <field name="phone"/>
                 </group>
             </field>
         </record>
-    </data>
 
+        <!-- Add Display to user booleans -->
+        <record id="website_menu_form_display_user" model="ir.ui.view">
+            <field name="name">Website.menu.form: Display to user booleans</field>
+            <field name="model">website.menu</field>
+            <field name="inherit_id" ref="website_multi_company.menu_form"/>
+            <field name="arch" type="xml">
+                <field name="parent_id" position="after">
+                    <field name="user_logged"/>
+                    <field name="user_not_logged"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
 </odoo>

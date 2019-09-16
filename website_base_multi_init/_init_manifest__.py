@@ -50,11 +50,14 @@
     ],
     'data': [
         'data/company_data.xml',
-        'data/menu_data.xml',
-        'data/page_data.xml',
         'data/website_data.xml',
         'views/res_company_views.xml',
         'views/website_views.xml',
+        'views/product_views.xml',
+        'templates/header.xml',
+        'templates/account.xml',
+        'templates/snippets.xml',
+        'templates/breadcrumbs_bar.xml',
     ],
     'images': [
         '/static/description/icon.png',

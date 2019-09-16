@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="THEME_NAME_website_sale_product" name="Product THEME_NAME Template" inherit_id="website_multi_theme.auto_view_THEME_NAME_website_sale_product">
+
+        <!-- Add to wishlist button -->
+        <xpath expr="//a[@id='add_to_cart']" position="after">
+            <t t-if="product.env.ref('website_multi_theme.auto_view_THEME_NAME_website_sale_wishlist_add_to_wishlist').active">
+                <t t-set="in_wish" t-value="product.product_variant_ids &amp; request.env['product.wishlist'].current().mapped('product_id')"/>
+                <a class="btn btn-default btn-lg mt8 o_add_wishlist_dyn" t-att-disabled='in_wish or None' title="Add to Wishlist"
+                   t-att-data-product-product-id="product.product_variant_ids[0].id" data-action="o_wishlist">
+                    <span class="fa fa-heart"/>
+                </a>
+            </t>
+        </xpath>
+
+        <!-- Image URL and attributes -->
+        <xpath expr="//div[hasclass('carousel-inner')]/div[2]" position="replace">
+            <div t-attf-class="item#{'' if variant_img else ' active'}">
+                <img t-att-alt="product.name" t-att-title="product.name" class="product_detail_img js_variant_img"
+                     t-attf-src="/website/image/product.template/{{product.id}}/image/"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('carousel-inner')]/t/div[hasclass('item')]" position="replace">
+            <div class="item">
+                <img t-att-alt="pimg.name" t-att-title="pimg.name" class="product_detail_img"
+                     t-attf-src="/web/image/product.image/{{pimg.id}}/image/"/>
+            </div>
+        </xpath>
+
+        <!-- Hide guarantee -->
+        <xpath expr="//div[@id='product_details']//hr[last()]" position="replace"/>
+        <xpath expr="//div[@id='product_details']/p[last()]" position="replace"/>
+
+        <!-- Add short product description -->
+        <xpath expr="//div[@id='product_details']//hr[@t-if='product.description_sale']" position="attributes">
+            <attribute name="t-if">product.description_short</attribute>
+        </xpath>
+        <xpath expr="//div[@id='product_details']//div[hasclass('o_not_editable')]/p" position="attributes">
+            <attribute name="t-field">product.description_short</attribute>
+        </xpath>
+
+        <!-- Add full product HTML description -->
+        <xpath expr="//div[@id='product_full_description']" position="replace">
+            <div class="oe_structure mt16 mb16" id="product_full_description" t-if="product.description">
+                <div class="container" t-if="len(product.description) > 15" itemprop="description">
+                    <div class="row">
+                        <div class="col-md-12" t-field="product.description"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+
+    </template>
+
+</odoo>
