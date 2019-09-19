@@ -39,14 +39,16 @@
         'Rubén Seijas <ruben@comunitea.com>',
     ],
     'depends': [
-        'ecommerce_base',
+        'base',
         'web_website',
         'ir_rule_website',
+        'ecommerce_base',
         'website_multi_company',
         'website_multi_company_crm',
         'website_multi_company_sale',
         'website_multi_company_portal',
         'website_multi_company_sale_delivery',
+        'website_multi_theme',
     ],
     'data': [
     ],
