@@ -10,8 +10,8 @@ class ResUsers(models.Model):
     backend_website_ids = fields.Many2many(
         'website',
         'website_user_rel',
-        'website_id',
         'user_id',
+        'website_id',
         string=_('Allowed Backend Websites'),
         help=_('Only websites presents let user get portal access'),
         compute=False,
