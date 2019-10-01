@@ -4,6 +4,7 @@
 import logging
 
 from odoo import api, models
+from odoo.tools import config
 
 
 MODULE = "website_multi_theme"
@@ -17,9 +18,73 @@ class Website(models.Model):
     _inherit = "website"
 
     @api.multi
+    def _duplicate_view_for_website(self, pattern, xmlid, override_key):
+        """
+        Duplicate a view pattern and enable it only for current website.
+
+        Workaround to overwrite the ir.model.data with noupdate=False to make possible keep active
+        the desired customize views what and avoid they will be deactivated in website_multi_theme module update.
+
+        :param ir.ui.view pattern:
+            Original view that will be copied for current website.
+
+        :param str xmlid:
+            The XML ID of the generated record.
+
+        :param bool override_key:
+            Indicates wether the view key should be overriden. If ``True``,
+            it will become the same as :param:`xmlid`. Otherwise, the key will
+            be copied from :param:`pattern` as it would happen normally.
+
+        :return ir.ui.view:
+            The duplicated view.
+        """
+        self.ensure_one()
+        # Return the pre-existing copy if any
+        try:
+            result = self.env.ref(xmlid)
+        except ValueError:
+            pass
+        else:
+            # If we develop and want xml reloading, update view arch always
+            if "xml" in config.get("dev_mode"):
+                result.arch = pattern.arch
+            return result
+        # Copy patterns only for current website
+        key = xmlid if override_key else pattern.key
+        result = pattern.copy({
+            "active": pattern.was_active,
+            "arch_fs": False,
+            "key": key,
+            "name": '%s (Website #%s)' % (pattern.name, self.id),
+            "website_id": self.id,
+            "origin_view_id": pattern.id,
+        })
+        # Assign external IDs to new views
+        module, name = xmlid.split(".")
+        self.env["ir.model.data"].with_context(
+            duplicate_view_for_website=True
+        ).create({
+            "model": result._name,
+            "module": module,
+            "name": name,
+            "noupdate": False,  # This is the only change
+            "res_id": result.id,
+        })
+        _logger.debug(
+            "Duplicated %s as %s with xmlid %s for %s with arch:\n%s",
+            pattern.display_name,
+            result.display_name,
+            xmlid,
+            self.display_name,
+            result.arch,
+        )
+        return result
+
+    @api.multi
     def _find_duplicated_view_for_website(self, origin_view):
         """
-        Modifies inherit method to find duplicates views but by origin_view.key instead of origin_view.id.
+        Workaround to modifies inherit method to find duplicates views but by origin_view.key instead of origin_view.id.
         :param origin_view: Now is a string not an integer
         :return: xmlid
         """

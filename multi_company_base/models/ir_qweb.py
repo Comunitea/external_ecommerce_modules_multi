@@ -20,7 +20,7 @@ class IrQWeb(models.AbstractModel, QWeb):
     @tools.ormcache_context('xmlid', 'options.get("lang", "en_US")', keys=("website_id",))
     def _get_asset_content(self, xmlid, options):
         """
-        Includes hook to only load theme assets for current website.
+        Workaround to include hook and only load theme assets for current website.
         """
         files = super(IrQWeb, self)._get_asset_content(xmlid=xmlid, options=options)
         new_files = []
@@ -29,7 +29,7 @@ class IrQWeb(models.AbstractModel, QWeb):
                 for f in file:
                     if 'theme_' in f['url'] and 'website' in dir(request):
                         theme_id = request.website.multi_theme_id.converted_theme_addon
-                        if theme_id in f['url']:
+                        if theme_id and theme_id in f['url']:
                             new_files.append(f)
                     else:
                         new_files.append(f)

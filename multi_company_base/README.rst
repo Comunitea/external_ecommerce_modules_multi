@@ -39,6 +39,36 @@ Web Editor
 
 It include some improves to let use css resources of each website only for web editor of their domain.
 
+Customized Views
+----------------
+
+It is overwrite the ir.model.data with noupdate=False to make possible keep active
+the desired customize views what and avoid they will be deactivated in website_multi_theme module update.
+
+Now , you may use a views.xml for activate the view what you want like this:
+
+    <record id="website_multi_theme.auto_view_poi_website_layout_logo_show" model="ir.ui.view">
+    <field name="active">True</field>
+    </record>
+
+Multi themes views
+------------------
+
+Change xmlid of duplicated views for the three first characters of website name a make it easy overwrite they
+including assets and layouts views
+
+Using this:
+
+    website.name[0:3].strip().lower()
+
+You get:
+
+    website_multi_theme.auto_view_XXX_website_layout_logo_show
+
+Instead of:
+
+    website_multi_theme.auto_view_1643_website_layout_logo_show
+
 Dependencies
 ------------
 
