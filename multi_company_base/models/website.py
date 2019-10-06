@@ -40,7 +40,10 @@ class Website(models.Model):
             The duplicated view.
         """
         self.ensure_one()
-        # Return the pre-existing copy if any
+        # Return the pre-existing copy if any or delete if is a copy of custom theme views
+        # Do not duplicated custom theme views no duplicated by default
+        duplicate = True
+        theme = self.multi_theme_id.converted_theme_addon
         try:
             result = self.env.ref(xmlid)
         except ValueError:
@@ -49,37 +52,48 @@ class Website(models.Model):
             # If we develop and want xml reloading, update view arch always
             if "xml" in config.get("dev_mode"):
                 result.arch = pattern.arch
-            return result
+            if pattern.key and theme and theme in pattern.key and not pattern.inherit_id:
+                _logger.debug("DELETED COPIED VIEW for %s: %s", result.display_name, result.display_name)
+                result.unlink()
+                return
+            else:
+                return result
         # Copy patterns only for current website
-        key = xmlid if override_key else pattern.key
-        result = pattern.copy({
-            "active": pattern.was_active,
-            "arch_fs": False,
-            "key": key,
-            "name": '%s (Website #%s)' % (pattern.name, self.id),
-            "website_id": self.id,
-            "origin_view_id": pattern.id,
-        })
-        # Assign external IDs to new views
-        module, name = xmlid.split(".")
-        self.env["ir.model.data"].with_context(
-            duplicate_view_for_website=True
-        ).create({
-            "model": result._name,
-            "module": module,
-            "name": name,
-            "noupdate": False,  # This is the only change
-            "res_id": result.id,
-        })
-        _logger.debug(
-            "Duplicated %s as %s with xmlid %s for %s with arch:\n%s",
-            pattern.display_name,
-            result.display_name,
-            xmlid,
-            self.display_name,
-            result.arch,
-        )
-        return result
+        _logger.debug("PATTERN.KEY %s: %s", pattern.display_name, pattern.key)
+        if pattern.key and theme and theme in pattern.key and not pattern.inherit_id:
+            duplicate = False
+            _logger.info("NO DUPLICATED CUSTOM VIEW for %s: %s", pattern.display_name, pattern.key)
+
+        if duplicate:
+            key = xmlid if override_key else pattern.key
+            result = pattern.copy({
+                "active": pattern.was_active,
+                "arch_fs": False,
+                "key": key,
+                "name": '%s (Website #%s)' % (pattern.name, self.id),
+                "website_id": self.id,
+                "origin_view_id": pattern.id,
+            })
+            # Assign external IDs to new views
+            module, name = xmlid.split(".")
+            self.env["ir.model.data"].with_context(
+                duplicate_view_for_website=True
+            ).create({
+                "model": result._name,
+                "module": module,
+                "name": name,
+                "noupdate": False,  # This is the only change
+                "res_id": result.id,
+            })
+            _logger.debug(
+                "Duplicated %s as %s with xmlid %s for %s with arch:\n%s",
+                pattern.display_name,
+                result.display_name,
+                xmlid,
+                self.display_name,
+                result.arch,
+            )
+            return result
 
     @api.multi
     def _find_duplicated_view_for_website(self, origin_view):
@@ -114,10 +128,9 @@ class Website(models.Model):
                     raise_if_not_found=False,
                 )
                 if not default_theme:
-                    _logger.info(
-                        "MULTI_COMPANY_BASE: Deleting multi website theme views for %s: %s",
-                        website.display_name,
-                        website.multi_theme_view_ids,
+                    _logger.info("Deleting multi website theme views for %s: %s",
+                                 website.display_name,
+                                 website.multi_theme_view_ids,
                     )
                     website.multi_theme_view_ids.unlink()
                     continue
@@ -145,55 +158,56 @@ class Website(models.Model):
             custom_views.update({
                 "active": True,
             })
+
+            _logger.debug("ASSETS MAPPED BY VIEW_ID: %s", website.multi_theme_id.get_assets().mapped("view_id"))
             # Duplicate all theme's views for this website
             for origin_view in website.multi_theme_id.get_assets().mapped("view_id"):
+                _logger.debug("TRYING COPY VIEW for %s - %s", origin_view.name, origin_view.key, )
                 copied_view = website._duplicate_view_for_website(
                     origin_view,
                     VIEW_KEY % (website.name[0:3].strip().lower(), origin_view.key.replace('.', '_')),
                     False
                 )
-                # Applied views must inherit from custom assets or layout
-                new_parent = None
-                if copied_view.inherit_id & main_views:
-                    if copied_view.inherit_id & main_assets_frontend:
-                        new_parent = custom_assets
-                    elif copied_view.inherit_id & main_layout:
-                        new_parent = custom_layout
-                else:
-                    parent_view = copied_view.inherit_id
+                # Do not duplicated custom theme views no duplicated by default
+                if copied_view:
+                    _logger.debug("COPIED VIEW for %s - %s", copied_view.name, copied_view.key,)
+                    # Applied views must inherit from custom assets or layout
+                    new_parent = None
+                    if copied_view.inherit_id & main_views:
+                        if copied_view.inherit_id & main_assets_frontend:
+                            new_parent = custom_assets
+                        elif copied_view.inherit_id & main_layout:
+                            new_parent = custom_layout
+                    else:
+                        parent_view = copied_view.inherit_id
 
-                    if parent_view and parent_view.key:
-                        parent_view = parent_view.key.replace('.', '_')
+                        if parent_view and parent_view.key:
+                            parent_view = parent_view.key.replace('.', '_')
 
-                    # check if parent was copied, so we need inherit that
-                    # instead of original parent, which is deactivated and not
-                    # used
-                    copied_parent = website._find_duplicated_view_for_website(
-                        parent_view
-                    )
+                        # check if parent was copied, so we need inherit that
+                        # instead of original parent, which is deactivated and not used
+                        copied_parent = website._find_duplicated_view_for_website(
+                            parent_view
+                        )
 
-                    if copied_parent:
-                        new_parent = copied_parent
+                        if copied_parent:
+                            new_parent = copied_parent
 
-                if new_parent:
-                    copied_view._replace_parent(new_parent)
+                    if new_parent:
+                        copied_view._replace_parent(new_parent)
 
-                custom_views |= copied_view
+                    _logger.debug("REPLACE PARENT VIEW for %s with: %s", copied_view.key, copied_view.inherit_id.key,)
+
+                    custom_views |= copied_view
             # Delete any custom view that should exist no more
             views_to_remove = website.multi_theme_view_ids - custom_views
             # Removed views could be a copied parent for others
             # So, replace to original parent first
-            views_to_replace_parent = \
-                self.env['ir.ui.view']\
-                    .with_context(active_test=False)\
-                    .search([
-                        ('inherit_id', 'in', views_to_remove.ids)
-                    ])
+            views_to_replace_parent = self.env['ir.ui.view'].with_context(active_test=False).search([
+                ('inherit_id', 'in', views_to_remove.ids)
+            ])
             for view in views_to_replace_parent:
                 view._replace_parent(view.inherit_id.origin_view_id)
             views_to_remove.unlink()
-            _logger.info(
-                "MULTI_COMPANY_BASE: Updated multi website theme views for %s: %s",
-                website.display_name,
-                website.multi_theme_view_ids,
-            )
+            _logger.info("Updated multi website theme views for %s: %s",
+                         website.display_name, website.multi_theme_view_ids,)
