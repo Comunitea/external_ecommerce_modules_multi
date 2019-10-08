@@ -53,7 +53,7 @@ class Website(models.Model):
             if "xml" in config.get("dev_mode"):
                 result.arch = pattern.arch
             if pattern.key and theme and theme in pattern.key and not pattern.inherit_id:
-                _logger.debug("DELETED COPIED VIEW for %s: %s", result.display_name, result.display_name)
+                _logger.info("DELETE DUPLICATE VIEW for %s: %s", result.display_name, result.display_name)
                 result.unlink()
                 return
             else:
@@ -62,7 +62,7 @@ class Website(models.Model):
         _logger.debug("PATTERN.KEY %s: %s", pattern.display_name, pattern.key)
         if pattern.key and theme and theme in pattern.key and not pattern.inherit_id:
             duplicate = False
-            _logger.info("NO DUPLICATED CUSTOM VIEW for %s: %s", pattern.display_name, pattern.key)
+            _logger.info("NO DUPLICATE VIEW for %s: %s", pattern.display_name, pattern.key)
 
         if duplicate:
             key = xmlid if override_key else pattern.key

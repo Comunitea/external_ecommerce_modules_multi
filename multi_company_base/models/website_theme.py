@@ -31,14 +31,20 @@ class WebsiteThemeAsset(models.Model):
                 one.view_id = False
                 _logger.debug("Ref not found: %s", one.name)
             else:
-                if one.view_id.active or (not one.view_id.active and not one.view_id.inherit_id):
+                theme = one.theme_id.converted_theme_addon
+                if one.view_id.active or (theme and theme in one.view_id.key and not one.view_id.active
+                                          and not one.view_id.inherit_id):
                     active = False
                     was_active = True
-                    if 'website_assets_frontend' in one.view_id.key or not one.view_id.inherit_id:
+                    if 'website_assets_frontend' in one.view_id.key or (theme and theme in one.view_id.key
+                                                                        and not one.view_id.inherit_id):
                         active = True
                         was_active = False
-                        _logger.info("ACTIVATING THEME ASSETS VIEW with name: %s - view_id: %s - key: %s",
-                            one.name, one.view_id.id, one.view_id.key)
+                        _logger.info("ACTIVATE VIEW with name: %s - view_id: %s - key: %s",
+                                     one.name, one.view_id.id, one.view_id.key)
+                    else:
+                        _logger.info("DEACTIVATE VIEW with name: %s - view_id: %s - key: %s",
+                                     one.name, one.view_id.id, one.view_id.key)
                     # Disable it and set it to be enabled in multi theme mode
                     # Except for theme assets. To be charged in web editor
                     one.view_id.write({
