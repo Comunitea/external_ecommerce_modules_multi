@@ -3,18 +3,21 @@
 
     <!-- Record that lets website admin to choose this theme -->
     <record model="website.theme" id="THEME_NAME_multi">
-        <field name="name">Multi Website Theme</field>
+        <field name="name">Multi Website THEME_NAME Theme</field>
+        <field name="converted_theme_addon">THEME_NAME</field>
         <field name="dependency_ids" eval="[(4, ref('website_multi_theme.theme_default'))]"/>
+<!--        <field name="asset_ids" eval="[(4, ref('theme_base_multi_init.THEME_NAME_multi_asset'))]"/>-->
     </record>
 
     <!-- List provided assets  -->
     <record model="website.theme.asset" id="THEME_NAME_multi_asset">
-        <field name="name">theme_name.THEME_NAME_website_assets_frontend</field>
-        <field name="theme_id" ref="theme_name.THEME_NAME_multi"/>
+        <field name="name">website_theme_asset_THEME_NAME</field>
+        <field name="theme_id" ref="THEME_NAME.THEME_NAME_multi"/>
+<!--        <field name="view_id" ref="THEME_NAME.website_theme_asset_THEME_NAME"/>-->
     </record>
 
     <!-- Themes should always call this method after adding their stuff,
-         to make users get immediate availability, insead of having to reload themes. -->
+         to make users get immediate availability, instead of having to reload themes. -->
     <function model="website.theme"
               name="_convert_assets"
               eval="([ref('theme_name.THEME_NAME_multi')])"/>

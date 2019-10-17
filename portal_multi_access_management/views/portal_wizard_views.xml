@@ -53,7 +53,7 @@
                     <separator string="Optional Welcome Message"/>
                     <field name="welcome_message" placeholder="This text is included in the email sent to new portal users."/>
                     <footer>
-                        <button string="Apply" name="action_apply" type="object" class="btn-primary disabled if 'NO DOMAIN' in portal_access_domain else ''"/>
+                        <button string="Apply" name="action_apply" type="object" class="btn-primary" attrs="{'invisible': [('portal_access_domain', 'in', 'NO DOMAIN')]}"/>
                         <button string="Cancel" class="btn-default" special="cancel" />
                     </footer>
                 </form>

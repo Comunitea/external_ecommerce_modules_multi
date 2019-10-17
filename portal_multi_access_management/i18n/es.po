@@ -124,12 +124,12 @@ msgstr "Solo se puede gestionar el acceso al portal para el sitio web que tenga 
 #. module: portal_multi_access_management
 #: model:ir.ui.view,arch_db:portal.wizard_view
 msgid "Remember: <strong>NEVER USE ALL WEBSITES</strong>. You have to change it in black task bar by select another one."
-msgstr "Recuerde: <strong>NUNCA USE ALL WEBSITES</strong>. Debe seleccionar uno en la barra negra del menú."
+msgstr "Recuerde: <strong>NUNCA USE ALL WEBSITES</strong>. Debe seleccionar uno sito web en la barra negra del menú."
 
 #. module: portal_multi_access_management
 #: model:ir.ui.view,arch_db:portal.wizard_view
 msgid "If you do not have a website selector in black task bar, please ask for permissions of Multi Websites for Backend to your administrator."
-msgstr "Si no tiene el selector de sitios web en la barra negra del menú, por favor solicite los permisos de Multi Websites for Backend a su administrador."
+msgstr "Si no tiene el selector de sitios web en la barra negra del menú, por favor solicite los permisos de Multi Websites for Backend (Selector Sitios Web en ERP) a su administrador."
 
 #. module: portal_multi_access_management
 #: model:ir.ui.view,arch_db:portal.wizard_view
@@ -149,7 +149,7 @@ msgstr "Usuarios a Conceder Acceso"
 #. module: portal_multi_access_management
 #: model:ir.ui.view,arch_db:portal.wizard_view
 msgid "<strong>Please, pay attention to portal checkbox.</strong>"
-msgstr "<strong>Por favor, preste atención al check de: En el portal.</strong>"
+msgstr "<strong>Por favor, preste atención al check: En el portal.</strong>"
 
 #. module: portal_multi_access_management
 #: model:ir.ui.view,arch_db:portal.wizard_view
@@ -164,7 +164,7 @@ msgstr "Si un usuario ya lo tiene seleccionado es porque ya tiene acceso a algun
 #. module: portal_multi_access_management
 #: model:ir.ui.view,arch_db:portal.wizard_view
 msgid "Note that you can always check user access in their settings by allowed websites field."
-msgstr "Tenga en cuenta que siempre puede verificar a quesitios web tienen acceso los usuarios comprobando que sitios web tienen permitidos en su ficha de usuario."
+msgstr "Tenga en cuenta que siempre puede verificar a que sitios web tienen acceso los usuarios comprobando que sitios web tienen permitidos en su ficha de usuario."
 
 #. module: portal_multi_access_management
 #: model:ir.ui.view,arch_db:portal.wizard_view

@@ -37,6 +37,10 @@ They only be enabled to get portal access for their allowed websites.
 
 Set this in Settings > Users and companies > Users > Multi websites > Allowed Websites
 
+Users
+~~~~~~
+Now it is possible for an user that use their same login into different websites
+
 Invitation
 ~~~~~~~~~~
 Improve portal access management wizard
@@ -54,6 +58,11 @@ Portal checkbox
 #. Remember: You have to check it for users who you want granted access.
 #. If an user have already checked it then means this user has already get granted access for some website but not for a website with this domain, therefore will be sent a new email access for this domain.
 #. Note that you can always check user access in their settings by allowed websites field.
+
+Portal Account
+--------------
+
+All documents in multi user system by website are showed only for website user.
 
 Author
 ~~~~~~

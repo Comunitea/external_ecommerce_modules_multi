@@ -11,11 +11,12 @@
         <record id="website.menu_homepage" model="website.menu">
             <field name="name">Home</field>
             <field name="website_id" ref="website.default_website"/>
-            <field name="website_published">False</field>
             <field name="url">/</field>
             <field name="parent_id" ref="website.main_menu"/>
             <field name="sequence" type="int">10</field>
             <field name="website_id" ref="default_website"/>
+            <field name="user_logged">False</field>
+            <field name="user_not_logged">False</field>
         </record>
 
         <!-- split between ir_ui_view & website_page record to keep external_id on ir_ui_view -->
@@ -68,6 +69,55 @@
             <field name="sequence" type="int">70</field>
             <field name="website_id" ref="website.default_website"/>
         </record>
+
+<!--        &lt;!&ndash; Shop &ndash;&gt;-->
+<!--        <record id="website_sale.menu_shop" model="website.menu">-->
+<!--            <field name="name">Shop</field>-->
+<!--            <field name="url">/shop</field>-->
+<!--            <field name="parent_id" ref="theme_anzamar.anzamar_main_menu"/>-->
+<!--            <field name="sequence" type="int">20</field>-->
+<!--            <field name="website_id" ref="website_base_multi_anz.anzamar_website"/>-->
+<!--            <field name="user_logged">False</field>-->
+<!--            <field name="user_not_logged">False</field>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Shop by Brands &ndash;&gt;-->
+<!--        <record id="website_sale_product_brand.menu_website_sale_brand" model="website.menu">-->
+<!--            <field name="name">Brands</field>-->
+<!--            <field name="url">/page/product_brands</field>-->
+<!--            <field name="parent_id" ref="theme_anzamar.anzamar_main_menu"/>-->
+<!--            <field name="sequence" type="int">30</field>-->
+<!--            <field name="website_id" ref="website_base_multi_anz.anzamar_website"/>-->
+<!--            <field name="user_logged">False</field>-->
+<!--            <field name="user_not_logged">False</field>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash;Blog Menu&ndash;&gt;-->
+<!--        <record id="website_blog.menu_news" model="website.menu">-->
+<!--            <field name="name">Blog</field>-->
+<!--            &lt;!&ndash;<field name="url" eval="'/blog/'+str(ref('website_blog.blog_blog_1'))"/>&ndash;&gt;-->
+<!--            <field name="url">/blog</field>-->
+<!--            <field name="parent_id" ref="theme_anzamar.anzamar_main_menu"/>-->
+<!--            <field name="sequence" type="int">80</field>-->
+<!--            <field name="website_id" ref="website_base_multi_anz.anzamar_website"/>-->
+<!--            <field name="user_logged">True</field>-->
+<!--            <field name="user_not_logged">True</field>-->
+<!--        </record>-->
+
+<!--        <record id="website_blog.action_open_website" model="ir.actions.act_url">-->
+<!--            <field name="url" eval="'/blog'"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Contact &ndash;&gt;-->
+<!--        <record id="website.menu_contactus" model="website.menu">-->
+<!--            <field name="name">Contact Us</field>-->
+<!--            <field name="url">/contactus</field>-->
+<!--            <field name="parent_id" ref="theme_anzamar.anzamar_main_menu"/>-->
+<!--            <field name="sequence" type="int">90</field>-->
+<!--            <field name="website_id" ref="website_base_multi_anz.anzamar_website"/>-->
+<!--            <field name="user_logged">False</field>-->
+<!--            <field name="user_not_logged">False</field>-->
+<!--        </record>-->
 
     </data>
 </odoo>

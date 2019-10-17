@@ -57,6 +57,7 @@
         'templates/page_newsletter.xml',
         'templates/page_with_sections.xml',
         'templates/product.xml',
+        'views/customize_views.xml',
     ],
     'images': [
         '/static/description/icon.png',

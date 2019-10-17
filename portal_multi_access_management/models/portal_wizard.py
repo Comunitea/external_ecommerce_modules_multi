@@ -27,10 +27,6 @@ class PortalWizardUser(models.TransientModel):
         # The wizard create an access for current website in current company
 
         backend_website = self.env.user.backend_website_id
-
-        import ipdb;
-        ipdb.set_trace()
-
         for wizard_user in self.sudo().with_context(active_test=False, website_id=backend_website.id):
             group_portal = wizard_user.wizard_id.portal_id
             if not group_portal.is_portal:
