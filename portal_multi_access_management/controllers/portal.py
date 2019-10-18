@@ -53,6 +53,8 @@ class CustomerPortal(CustomerPortal):
         sales_user = values['sales_user']
         if partner.user_ids[0] and not partner.user_ids[0]._is_public():
             sales_user = partner.user_ids[0]
+            sales_user.email = partner.user_ids[0].email
+            sales_user.email_multi_website = partner.user_ids[0].email
         values.update({
             'quotation_count': quotation_count,
             'order_count': order_count,

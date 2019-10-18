@@ -171,3 +171,33 @@ msgstr "Tenga en cuenta que siempre puede verificar a que sitios web tienen acce
 msgid "Optional Welcome Message"
 msgstr "Mensaje Opcional de Bienvenida"
 
+#. module: portal_multi_access_management
+#: code:addons/portal_multi_access_management/models/res_users.py:50
+#, python-format
+msgid "Another user is already registered in the same website!"
+msgstr "Otro usuario ya está registrado en el mismo sitio web!"
+
+#. module: portal_multi_access_management
+#: code:addons/portal_multi_access_management/controllers/main.py:52
+#: code:addons/portal_multi_access_management/models/res_users.py:144
+#, python-format
+msgid "Another user is already registered using this email address."
+msgstr "Otro usuario ya está registrado con este mismo correo electrónico."
+
+#. module: portal_multi_access_management
+#: code:addons/portal_multi_access_management/controllers/main.py:115
+#, python-format
+msgid "Authentication Failed."
+msgstr "Autentificación Fallida."
+
+#. module: portal_multi_access_management
+#: code:addons/portal_multi_access_management/models/res_users.py:154
+#, python-format
+msgid "Reset password: invalid username or email"
+msgstr "Cambiar contraseña: usuario o correo no válido"
+
+#. module: portal_multi_access_management
+#: code:addons/portal_multi_access_management/models/res_users.py:86
+#, python-format
+msgid "The user '%s' with the same login '%s' is already allowed this website '%s'!. It is not possible to use different users with the same login on the same website."
+msgstr "El usuario '%s' con el mismo login '%s' ya tiene acceso a este sitio web '%s'!. No está permitido usar dos usuarios con el mismo login en el mismo sitio web."
