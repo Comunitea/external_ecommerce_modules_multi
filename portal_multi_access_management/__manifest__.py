@@ -43,7 +43,6 @@
         'ir_config_parameter_multi_company',
     ],
     'data': [
-        "security/account_security.xml",
         'templates/head.xml',
         'views/portal_wizard_views.xml',
     ],
