@@ -123,7 +123,19 @@ class ResUsers(models.Model):
         try:
             with cls.pool.cursor() as cr:
                 env = api.Environment(cr, SUPERUSER_ID, {})[cls._name]
-                user_id = cls._get_user(login, password, env)
+                if not request:
+                    user_ids = env.search([('login', '=', login)]).filtered(lambda x: x.has_group("base.group_user"))
+                    for user in user_ids:
+                        try:
+                            user_id = user.id
+                            user.sudo(user.id).check_credentials(password)
+                            user.sudo(user_id)._update_last_login()
+                        except AccessDenied:
+                            user_id = False
+                        if user_id:
+                            return user_id
+                else:
+                    user_id = cls._get_user(login, password, env)
         except AccessDenied:
             user_id = False
         status = "successful" if user_id else "failed"
