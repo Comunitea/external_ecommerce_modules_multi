@@ -2,7 +2,7 @@
 
 from odoo import api, fields, models, _
 
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 
 
 class PortalWizardUser(models.TransientModel):
@@ -25,8 +25,11 @@ class PortalWizardUser(models.TransientModel):
 
         # Change: website_id is necessary in context for a company with multi website.
         # The wizard create an access for current website in current company
-
         backend_website = self.env.user.backend_website_id
+        if not backend_website:
+            raise ValidationError(_("Please, follow wizard instructions about CAUTION section.\n"
+                                  "You have to select a specific website to send a portal invitation."))
+
         for wizard_user in self.sudo().with_context(active_test=False, website_id=backend_website.id):
             group_portal = wizard_user.wizard_id.portal_id
             if not group_portal.is_portal:

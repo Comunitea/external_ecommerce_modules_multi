@@ -113,8 +113,8 @@ msgstr "Derechos de Acceso Asignados"
 
 #. module: portal_multi_access_management
 #: model:ir.ui.view,arch_db:portal.wizard_view
-msgid "CAUTION"
-msgstr "PRECAUCIÓN"
+msgid "<strong>CAUTION</strong>:"
+msgstr "<strong>PRECAUCIÓN</strong>:"
 
 #. module: portal_multi_access_management
 #: model:ir.ui.view,arch_db:portal.wizard_view
@@ -201,3 +201,11 @@ msgstr "Cambiar contraseña: usuario o correo no válido"
 #, python-format
 msgid "The user '%s' with the same login '%s' is already allowed this website '%s'!. It is not possible to use different users with the same login on the same website."
 msgstr "El usuario '%s' con el mismo login '%s' ya tiene acceso a este sitio web '%s'!. No está permitido usar dos usuarios con el mismo login en el mismo sitio web."
+
+#. module: portal_multi_access_management
+#: code:addons/portal_multi_access_management/models/portal_wizard.py:30
+#, python-format
+msgid "Please, follow wizard instructions about CAUTION section.\n"
+"You have to select a specific website to send a portal invitation."
+msgstr "Por favor, siga las instrucciones del asistente sobre el apartado PRECAUCIÓN.\n"
+"Es obligatorio especificar a que sitio web se quiere realizar la invitación."
