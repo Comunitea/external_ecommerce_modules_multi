@@ -46,47 +46,77 @@ Invitation
 Improve portal access management wizard
 
 By Domain
----------
+~~~~~~~~~~
 #. You only can management portal access for your current website domain.
 #. Remember you can change it in black task bar by select another one.
 #. If you do not have a website selector in black task bar, please ask for permissions of Multi Websites for Backend to your administrator.
 #. Please, note this selector is available only if you have more than one allowed website otherwise current website domain will be taken.
 
 Portal checkbox
----------------
+~~~~~~~~~~~~~~~
 #. Please, pay attention to portal checkbox.
 #. Remember: You have to check it for users who you want granted access.
 #. If an user have already checked it then means this user has already get granted access for some website but not for a website with this domain, therefore will be sent a new email access for this domain.
 #. Note that you can always check user access in their settings by allowed websites field.
 
 Portal Account
---------------
-
+~~~~~~~~~~~~~~
 All documents in multi user system by website are showed only for website user.
+
+Register and Reset pwd form
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Add validation script for email field to check correct pattern: your_name@provider.domain
 
 Author
 ~~~~~~
+.. image:: https://comunitea.com/wp-content/uploads/2016/01/logocomunitea3.png
+   :alt: Comunitea
+   :target: https://comunitea.com
 
-Developer: Comunitea, info@comunitea.com
+Comunitea Servicios Tecnológicos S.L.
+
+For support and more information, please visit `<https://comunitea.com>`_.
 
 Contributors
 ------------
-
-* Rubén Seijas, ruben@comunitea.com
+Rubén Seijas (ruben@comunitea.com)
 
 Maintainer
-~~~~~~~~~~
+----------
+.. image:: https://comunitea.com/wp-content/uploads/2016/01/logocomunitea3.png
+   :alt: Comunitea
+   :target: https://comunitea.com
 
-This module is maintained by the Comunitea http://www.comunitea.com.
+Comunitea Servicios Tecnológicos S.L.
+
+For support and more information, please visit `<https://comunitea.com>`_.
+
+Known issues / Roadmap
+~~~~~~~~~~~~~~~~~~~~~~
+
+This module has the following limitations:
+
+ * It will not work as long as cookies are not accepted.
+ * When cookies are already accepted you need to change the page or manually reload it to see the header affix on the top of the page.
+ * TODO: Be able to establish the position of the scroll from which you want to affix the header.
+
+Bug Tracker
+~~~~~~~~~~~
+Bugs are tracked on `Comunitea Issues <https://github.com/Comunitea/external_ecommerce_modules/issues>`_.
+In case of trouble, please check there if your issue has already been reported.
+If you spotted it first, help us smashing it by providing a detailed and welcomed
+`Feedback <https://github.com/Comunitea/PXGO_00028_2014_SyD/issues/new>`_.
+
+Please, do not contact contributors directly about support or help with technical issues.
 
 Disclaimer of Warranties
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
     **Attention!**
 
     We provide this module as is, and we make no promises or guarantees about this correct working.
 
-Comunitea provides this application without warranty of any kind.
+    `Comunitea <https://comunitea.com>`_ provides this application without warranty of any kind.
 
-Comunitea does not warrant that the module will meet your requirements;
-that the current application will be uninterrupted, timely, secure, or error-free or that any defects or errors will be corrected.
+    `Comunitea <https://comunitea.com>`_ does not warrant that the module will meet your requirements;
+    that the current application will be uninterrupted, timely, secure, or error-free or that any defects or errors will be corrected.

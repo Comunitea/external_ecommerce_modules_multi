@@ -16,6 +16,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: portal_multi_access_management
+#. openerp-web
+#: code:addons/portal_multi_access_management/static/src/js/main.js:9
+#, python-format
+msgid "Please, write your email with a right format such: your_name@provider.domain"
+msgstr "Por favor, el correo debe cumplir el formato: nombre@proveedor.dominio"
+
+#. module: portal_multi_access_management
 #: code:addons/portal_multi_access_management/models/res_users.py:15
 #: model:ir.model.fields,field_description:portal_multi_access_management.field_res_users_backend_website_ids
 #, python-format

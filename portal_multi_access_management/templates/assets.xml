@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- Delayed charge of own js at the end of pages -->
+    <template id="website_layout" inherit_id="website.layout" name="Main layout Portal Multi Access Management">
+         <!-- Add to bottom of page -->
+        <xpath expr="//div[@id='wrapwrap']" position="after">
+            <script type="text/javascript" src="/portal_multi_access_management/static/js/jquery.validate.min.js"/>
+            <script type="text/javascript" src="/portal_multi_access_management/static/js/main.js"/>
+        </xpath>
+    </template>
+
+</odoo>

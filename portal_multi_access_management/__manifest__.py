@@ -24,7 +24,7 @@
 
 {
     'name': 'Portal Multi Access Management',
-    'version': '1.0',
+    'version': '11.0.0.1.0',
     'summary': 'Manage allowed websites to portal access and portal wizard invitation',
     'description': '',
     'category': 'Website',
@@ -43,7 +43,7 @@
         'ir_config_parameter_multi_company',
     ],
     'data': [
-        'templates/head.xml',
+        'templates/assets.xml',
         'views/portal_wizard_views.xml',
     ],
     'images': [
