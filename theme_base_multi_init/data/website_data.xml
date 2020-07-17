@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-
-    <record id="website.default_website" model="website">
-        <field name="multi_theme_id" ref="theme_name.THEME_NAME_multi"/>
-    </record>
-
-</odoo>
