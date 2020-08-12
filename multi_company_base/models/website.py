@@ -121,7 +121,8 @@ class Website(models.Model):
         # Patterns that will be duplicated to enable multi themes
         assets_pattern = self.env.ref("website_multi_theme.assets_pattern")
         layout_pattern = self.env.ref("website_multi_theme.layout_pattern")
-        for website in self:
+        # Prevent bad website names. At least len of 3 chars.
+        for website in self.filtered(lambda x: x.name and len(x.name) > 2):
             if not website.multi_theme_id:
                 default_theme = self.env.ref(
                     'website_multi_theme.theme_default',
@@ -129,9 +130,7 @@ class Website(models.Model):
                 )
                 if not default_theme:
                     _logger.info("Deleting multi website theme views for %s: %s",
-                                 website.display_name,
-                                 website.multi_theme_view_ids,
-                    )
+                                 website.display_name, website.multi_theme_view_ids)
                     website.multi_theme_view_ids.unlink()
                     continue
                 else:
@@ -208,6 +207,7 @@ class Website(models.Model):
             ])
             for view in views_to_replace_parent:
                 view._replace_parent(view.inherit_id.origin_view_id)
+            _logger.info("Deleting any custom view that should exist no more: %s", views_to_remove)
             views_to_remove.unlink()
             _logger.info("Updated multi website theme views for %s: %s",
-                         website.display_name, website.multi_theme_view_ids,)
+                         website.display_name, website.multi_theme_view_ids)
